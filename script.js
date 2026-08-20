@@ -151,3 +151,41 @@ document.querySelectorAll('[data-copy]').forEach(btn=>btn.addEventListener('clic
   window.addEventListener('scroll',onScroll,{passive:true});
   window.addEventListener('resize',onScroll,{passive:true});
 })();
+
+/* V109 — GA4 contact-intent events.
+   Tracks contact actions without sending phone numbers, email addresses,
+   or other link destinations to Google Analytics. */
+(()=>{
+  document.addEventListener('click',event=>{
+    const link=event.target.closest('a[href]');
+    if(!link || typeof window.gtag!=='function') return;
+
+    const rawHref=(link.getAttribute('href')||'').trim();
+    if(!rawHref) return;
+
+    let eventName='';
+    const lowerHref=rawHref.toLowerCase();
+
+    if(lowerHref.startsWith('tel:')){
+      eventName='click_phone';
+    }else if(lowerHref.startsWith('mailto:')){
+      eventName='click_email';
+    }else if(lowerHref.includes('wa.me/') || lowerHref.includes('api.whatsapp.com/') || lowerHref.includes('whatsapp.com/')){
+      eventName='click_whatsapp';
+    }else{
+      try{
+        const url=new URL(rawHref,window.location.href);
+        if(url.pathname.replace(/\/+$/,'').endsWith('/contact.html')){
+          eventName='click_contact';
+        }
+      }catch(_){
+        return;
+      }
+    }
+
+    if(eventName){
+      window.gtag('event',eventName);
+    }
+  });
+})();
+
