@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://adigranat.github.io/sitemap.xml
