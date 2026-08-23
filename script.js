@@ -47,10 +47,13 @@ document.querySelectorAll('[data-copy]').forEach(btn=>btn.addEventListener('clic
   const progressBar=progress.firstElementChild;
 
   const scenes=Array.from(main.children).filter(el=>el.tagName==='SECTION');
+  const firstScene=scenes[0]||null;
   scenes.forEach((scene,index)=>{
     scene.classList.add('story-scene');
     scene.style.setProperty('--story-scene-index',index);
 
+    // Performance: the first viewport must be paintable immediately for LCP.
+    if(index===0) return;
     Array.from(scene.children).forEach(child=>{
       if(child.classList && child.classList.contains('shell')) child.classList.add('story-reveal');
     });
@@ -73,7 +76,8 @@ document.querySelectorAll('[data-copy]').forEach(btn=>btn.addEventListener('clic
     '.teams-support-card'
   ].join(',');
 
-  const storyItems=Array.from(document.querySelectorAll(itemSelector));
+  const storyItems=Array.from(document.querySelectorAll(itemSelector))
+    .filter(item=>!firstScene || !firstScene.contains(item));
   storyItems.forEach((item,index)=>{
     item.classList.add('story-item');
     item.style.setProperty('--story-delay',`${Math.min(index%5,4)*70}ms`);

@@ -29,3 +29,9 @@
 
 ## V112 — Search-intent content upgrade (2026-08-23)
 בוצע מחקר SERP ציבורי בעברית והוטמעו שאלות ותשובות לפי כוונות חיפוש חוזרות: מתי לפנות, מה ההבדל, איך נראה התהליך, כמה זמן, התאמה לאוכלוסיות, אונליין, אבחון/הדרכה. העמודים שעודכנו: therapy, rehabilitation, trauma, neuropsychology, children, professionals. Google הפסיקה FAQ rich results במאי 2026; ה-FAQ נשמר כתוכן people-first וכ-JSON-LD עקבי, לא כמנגנון Rich Result.
+
+
+## V113 — llms.txt v2 compliance (2026-08-23)
+- `llms.txt` הותאם למבנה v2 המחמיר ולרשימות קישורי Markdown.
+- נוסף `rel="describedby"` לכל 14 דפי ה־HTML לצורך גילוי מפורש של `/llms.txt`.
+- לא בוצעו שינויי תוכן, עיצוב או Schema בדפי האתר.
