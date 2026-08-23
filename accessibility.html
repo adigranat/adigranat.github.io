@@ -3,13 +3,30 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CSDEJJB0PF"></script>
+<!-- Google Analytics: queue immediately, load library after first render -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-CSDEJJB0PF');
+  (function(){
+    var loaded=false;
+    function loadGA(){
+      if(loaded) return;
+      loaded=true;
+      var s=document.createElement('script');
+      s.async=true;
+      s.src='https://www.googletagmanager.com/gtag/js?id=G-CSDEJJB0PF';
+      document.head.appendChild(s);
+    }
+    window.addEventListener('load', function(){
+      if('requestIdleCallback' in window){
+        requestIdleCallback(loadGA,{timeout:2000});
+      }else{
+        setTimeout(loadGA,500);
+      }
+    }, {once:true});
+  })();
 </script>
 <meta content="הצהרת הנגישות של אתר ד״ר עדי גרנט, כולל התאמות באתר, דרכי פנייה והסדרי נגישות הידועים בקליניקה." name="description"/>
 <meta content="#314257" name="theme-color"/>
@@ -19,7 +36,8 @@
 <meta content="הצהרת נגישות | ד״ר עדי גרנט" property="og:title"/><meta content="הצהרת הנגישות של אתר ד״ר עדי גרנט, כולל התאמות באתר, דרכי פנייה והסדרי נגישות הידועים בקליניקה." property="og:description"/>
 <meta content="ד״ר עדי גרנט" property="og:site_name"/><meta content="https://adigranat.github.io/assets/social-preview.jpg" property="og:image"/>
 <meta content="summary_large_image" name="twitter:card"/><meta content="הצהרת נגישות | ד״ר עדי גרנט" name="twitter:title"/><meta content="הצהרת הנגישות של אתר ד״ר עדי גרנט, כולל התאמות באתר, דרכי פנייה והסדרי נגישות הידועים בקליניקה." name="twitter:description"/><meta content="https://adigranat.github.io/assets/social-preview.jpg" name="twitter:image"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400..700&amp;family=Frank+Ruhl+Libre:wght@500..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400..700&amp;family=Frank+Ruhl+Libre:wght@500..700&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400..700&amp;family=Frank+Ruhl+Libre:wght@500..700&amp;display=swap" rel="stylesheet"/></noscript>
 <link href="style.css" rel="stylesheet"/><link href="effects.css" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"/><noscript><link href="effects.css" rel="stylesheet"/></noscript><link href="assets/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/><link href="assets/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
 <meta content="ד״ר עדי גרנט" name="author"/><meta content="index,follow" name="robots"/>
 <link rel="describedby" href="/llms.txt"/></head>

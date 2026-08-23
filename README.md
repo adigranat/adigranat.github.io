@@ -1,14 +1,11 @@
+# אתר ד״ר עדי גרנט — V115
 
-## עדכון V114 — Mobile Performance
-- המסך הראשון (Hero) אינו מוסתר עוד על ידי אנימציית Scrollytelling, לשיפור LCP.
-- הלוגו מוגש כ־WebP מוקטן; קובץ המקור נשמר בחבילה.
-- לתמונת הפורטרט בדף הבית ולתמונת Hero בעמוד „אני מאמין” נוספו `srcset`/`sizes` וגרסאות WebP מותאמות למובייל.
-- `style.css` עבר minification בטוח ללא שינוי סדר ה־cascade; CSS של אפקטי Scrollytelling הופרד ל־`effects.css` ונטען באופן לא חוסם.
-- Google Fonts עברו לטווחי Variable Font הדרושים בלבד (Heebo 400–700, Frank Ruhl Libre 500–700).
-- אפקטי Scrollytelling נשמרו מתחת למסך הראשון, ללא `will-change` רחב ובאנימציה קצרה יותר במובייל.
-- לא סומנו תמונות Hero כ־lazy, כדי לא לפגוע ב־LCP.
-
-# אתר ד״ר עדי גרנט — V114
+## עדכון V115 — Performance Phase 2
+- דף הבית טוען `home.css` ממוקד במקום את `style.css` המלא; `style.css` נשמר לעמודים הפנימיים.
+- Google Fonts נשארו Heebo ו־Frank Ruhl Libre, אך קובץ ה־CSS שלהם נטען non-blocking כדי שלא לעכב את הציור הראשוני.
+- ספריית GA4 נטענת רק לאחר `window.load`/idle, בעוד `dataLayer` ו־`gtag()` מוכנים מראש כדי לשמור אירועים.
+- אזורי הלחיצה של קישורי הפוטר במובייל הוגדלו ל־48px לפחות.
+- כל שיפורי V114 נשמרו: Hero גלוי מיד, תמונות responsive, WebP, CSS effects לא־חוסם.
 
 גרסה סופית, נקייה ועצמאית לפרסום של האתר הרב־עמודי של ד״ר עדי גרנט.
 החבילה כוללת את כל קבצי האתר ואת כל קבצי המדיה הנדרשים, ולכן ניתן להעלות אותה ל־GitHub Pages גם לאחר מחיקת קבצי גרסה קודמת.
@@ -39,7 +36,8 @@
 - `assets/favicon-32.png` — favicon
 - `assets/apple-touch-icon.png` — אייקון למכשירי Apple
 - `assets/social-preview.jpg` — תמונת שיתוף לרשתות
-- `style.css` — CSS ליבה ממוזער
+- `home.css` — CSS ממוקד לדף הבית
+- `style.css` — CSS לעמודים הפנימיים
 - `effects.css` — אפקטי Scrollytelling בטעינה לא־חוסמת
 - `script.js` — תפריט מובייל ו־Scrollytelling
 - `robots.txt` — הנחיות סריקה
@@ -68,7 +66,7 @@
 ## העלאה ל־GitHub Pages
 1. פתחו את המאגר `adigranat.github.io`.
 2. ניתן למחוק את קבצי האתר הישנים.
-3. העלו את **כל התוכן מתוך חבילת V113 FINAL**, כולל תיקיית `assets` והקובץ `.nojekyll`.
+3. העלו את **כל התוכן מתוך חבילת V115**, כולל תיקיית `assets` והקובץ `.nojekyll`.
 4. ודאו שב־Settings → Pages מוגדרים Branch: `main` ו־Folder: `/ (root)`.
 5. לאחר הפרסום בדקו את דף הבית, עמוד „אני מאמין”, עמוד טראומה, עמוד יצירת קשר, נגישות ומדיניות פרטיות — במחשב ובמובייל.
 
